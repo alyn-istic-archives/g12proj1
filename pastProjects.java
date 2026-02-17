@@ -1,0 +1,35 @@
+import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+
+public class pastProjects extends JFrame implements ActionListener, KeyListener {
+    //add scroll panel
+    public pastProjects(){
+
+    }
+    public void actionPerformed (ActionEvent e){
+
+    }
+    public void keyPresed(KeyEvent e){
+
+    }
+    public void keyTyped(KeyEvent e){
+
+    }
+
+    @Override
+    public void keyPressed(KeyEvent e) {
+
+    }
+
+    @Override
+    public void keyReleased(KeyEvent e) {
+
+    }
+
+    public void keyReleaed(KeyEvent e){
+
+    }
+}
