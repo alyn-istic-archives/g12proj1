@@ -333,7 +333,6 @@ public class Intro extends JFrame implements ActionListener, KeyListener{
             itxt2.setText(intro);
             itxt3.setText(intro);
             itxt4.setText(intro);
-            intro_txt.setForeground(new Color(191, 221, 243));
             itxt2.setForeground(new Color(191, 221, 243));
             itxt3.setForeground(new Color(191, 221, 243));
             itxt4.setForeground(new Color(191, 221, 243));
