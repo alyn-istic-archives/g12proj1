@@ -15,10 +15,10 @@ import javax.swing.Timer;
 public class Intro extends JFrame implements ActionListener, KeyListener{
 
 
-    JLabel intro_txt, background, icon, yap, star1, star2,event, itxt2,itxt3, itxt4, userb;
+    JLabel intro_txt, background, icon, yap, star1, star2,event, itxt2,itxt3, itxt4;
     Font f = new Font("Handjet", Font.BOLD, 80);
     Font g = new Font("Gravitas One", Font.BOLD, 75);
-    JButton iconb, yapb;
+    JButton iconb, yapb, userb;
     int introx, textw, texth, temp, max, a;
     ImageIcon abt_me, abt_me_clear, starb;
     Icon[] star = new Icon[17];
@@ -36,7 +36,7 @@ public class Intro extends JFrame implements ActionListener, KeyListener{
         popup_click=false;
         intro = "INTRO 01: ALYN";
         introx = 200;
-        textw = 1000;
+        textw = 2000;
         texth = 100;
 
         addKeyListener(this);
@@ -83,15 +83,17 @@ public class Intro extends JFrame implements ActionListener, KeyListener{
         abt_me_clear =(new ImageIcon("C:/Users/alyss/Downloads/yap_rect_v.png"));
 
         user = new JTextField("title text !!");
-        user.setBounds(450,500,300,100);
+        user.setBounds(350,500,300,100);
         user.setForeground(new Color(191, 221, 243));
         user.setFont(f);
         this.add(user);
 
-        userb = new JLabel("save title");
-        userb.setBounds(750, 500, 100, 200);
+        userb = new JButton("save title");
+        userb.setBounds(650, 500, 300, 100);
         userb.setForeground(new Color(191, 221, 243));
         userb.setFont(f);
+        userb.addActionListener(this);
+        userb.setOpaque(false);
         this.add(userb);
 
         yapb = new JButton("yap");
@@ -178,6 +180,10 @@ public class Intro extends JFrame implements ActionListener, KeyListener{
                 requestFocusInWindow();
             }
         }
+        if (e.getSource()=="userb"){
+            introUpdate("new title pending fade..");
+            requestFocusInWindow();
+        }
     }
 
     public void animate(Icon[] i, JLabel j, int ind){
@@ -221,7 +227,7 @@ public class Intro extends JFrame implements ActionListener, KeyListener{
 
     public void fadeout(JLabel j, int r, int g, int b, String l){
         a=255;
-        if (fadeoutTimer != null && (fadeinTimer.isRunning()||fadeoutTimer.isRunning())) {
+        if ((fadeoutTimer != null&&fadeoutTimer.isRunning()) || (fadeinTimer.isRunning()&&fadeinTimer != null)) {
             return;
         }
         String finalL = l;
@@ -244,14 +250,18 @@ public class Intro extends JFrame implements ActionListener, KeyListener{
 
     public void fadein(JLabel j, int r, int g, int b, String l){
         a=0;
-        if (fadeinTimer != null && (fadeinTimer.isRunning()||fadeoutTimer.isRunning())) {
-            return;
+        if (fadeinTimer!=null && fadeoutTimer!=null) {
+            if (fadeoutTimer.isRunning() || fadeinTimer.isRunning()) {
+                return;
+            }
+            else{
+                System.out.println("not null but running");
+            }
         }
         fadeinTimer = new Timer(30, new ActionListener() {
             public void actionPerformed(ActionEvent i) {
                 if (a < 250) {
                     j.setForeground(new Color(r, g, b, a));
-                    j.setText(l);
                     introUpdate(l);
                     requestFocusInWindow();
                     a += 10;
@@ -270,7 +280,8 @@ public class Intro extends JFrame implements ActionListener, KeyListener{
             case "about me" -> event.setText("lore drop 1!");
             case "click" -> event.setText("selfie core");
             case "up" -> event.setText("up arrow");
-            case "space" -> event.setText("fadeeeee");
+            case "fadein" -> event.setText("fadeeeee in");
+            case "fadeout" -> event.setText("fadeeeee out");
             default -> event.setText("interaction: ??");
 
         }
@@ -305,13 +316,15 @@ public class Intro extends JFrame implements ActionListener, KeyListener{
     }
 
     public void introUpdate(String u){
-        if (u=="cny"){
+        if (u.equals("cny")){
             intro = "shin nian quai leu";
+            intro_txt.setText(intro);
             itxt2.setText(intro);
             itxt3.setText(intro);
             itxt4.setText(intro);
         }else {
             intro = u;
+            intro_txt.setText(intro);
             itxt2.setText(intro);
             itxt3.setText(intro);
             itxt4.setText(intro);

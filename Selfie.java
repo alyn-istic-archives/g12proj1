@@ -12,7 +12,7 @@ import java.awt.event.WindowEvent;
 
 public class Selfie extends JFrame implements ActionListener{
     Font f = new Font("Handjet", Font.BOLD, 50);
-    JLabel background, yap, yap2;
+    JLabel background, yap, yap2, yap3;
     JButton self;
     int self_h, self_w;
     boolean inarea;
@@ -40,12 +40,19 @@ public class Selfie extends JFrame implements ActionListener{
         yap.setFont(f);
         this.add(yap);
 
-        yap2 = new JLabel("f - fade in, j - fade out, down+up arrows, explore !!");
+        yap2 = new JLabel("f - fade in, j - fade out");
         yap2.setBounds(10, 400, 1000, 50);
         yap2.setVisible(false);
         yap2.setForeground(new Color(191, 221, 243, 150));
         yap2.setFont(f);
         this.add(yap2);
+
+        yap3 = new JLabel("down+up arrows, explore !!");
+        yap3.setBounds(10, 400, 1000, 50);
+        yap3.setVisible(false);
+        yap3.setForeground(new Color(191, 221, 243, 150));
+        yap3.setFont(f);
+        this.add(yap3);
 
         background = new JLabel(new ImageIcon("C:/Users/alyss/Downloads/deepblue.png"));
         background.setBounds(0, 0, 1920, 1080);
@@ -59,6 +66,7 @@ public class Selfie extends JFrame implements ActionListener{
         if (e.getSource()==self){
             yap.setVisible(true);
             yap2.setVisible(true);
+            yap3.setVisible(true);
             requestFocusInWindow();
             new pastProjects();
         }
