@@ -1,3 +1,5 @@
+package g12proj1;
+
 import org.w3c.dom.ls.LSOutput;
 
 import javax.swing.*;
@@ -17,7 +19,7 @@ public class Selfie extends JFrame implements ActionListener{
     public Selfie(){
         this.setTitle("you've reached alyn !!");
         inarea = true;
-        setBounds(400, 100, 400, 600);
+        setBounds(900, 100, 400, 600);
         setLayout(null);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         this.setAlwaysOnTop(true);

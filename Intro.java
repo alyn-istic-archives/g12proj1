@@ -1,3 +1,5 @@
+package g12proj1;
+
 import org.w3c.dom.Text;
 
 import javax.swing.*;
@@ -48,7 +50,7 @@ public class Intro extends JFrame implements ActionListener, KeyListener{
         loadframes();
 
         event = new JLabel("interaction: ??");
-        event.setBounds(100, 400, 1000, 50);
+        event.setBounds(150, 400, 1000, 100);
         event.setForeground(new Color(225, 225, 225));
         event.setFont(f);
         this.add(event);
@@ -212,7 +214,7 @@ public class Intro extends JFrame implements ActionListener, KeyListener{
 
     public void fadeout(JLabel j, int r, int g, int b, String l){
         a=255;
-        if (fadeinTimer != null && fadeinTimer.isRunning()&& fadeoutTimer.isRunning()) {
+        if (fadeoutTimer != null && (fadeinTimer.isRunning()||fadeoutTimer.isRunning())) {
             return;
         }
         String finalL = l;
@@ -235,15 +237,15 @@ public class Intro extends JFrame implements ActionListener, KeyListener{
 
     public void fadein(JLabel j, int r, int g, int b, String l){
         a=0;
-        if (fadeinTimer != null && fadeinTimer.isRunning()&&fadeoutTimer.isRunning()) {
+        if (fadeinTimer != null && (fadeinTimer.isRunning()||fadeoutTimer.isRunning())) {
             return;
         }
         fadeinTimer = new Timer(30, new ActionListener() {
             public void actionPerformed(ActionEvent i) {
                 if (a < 250) {
                     j.setForeground(new Color(r, g, b, a));
-                    TextUpdate(l);
                     j.setText(l);
+                    introUpdate(l);
                     requestFocusInWindow();
                     a += 10;
                 } else {
@@ -278,13 +280,20 @@ public class Intro extends JFrame implements ActionListener, KeyListener{
         }
         if (ev.getKeyCode()== KeyEvent.VK_SPACE){
             TextUpdate("space");
-            String label = user.getText();
-            fadeout(intro_txt, 210, 210,222, label);
+            fadeout(intro_txt, 210, 210,222, user.getText());
+            fadeout(itxt2, 210, 210, 222, user.getText());
+            fadeout(itxt3, 210, 210, 222, user.getText());
+            fadeout(itxt4, 210, 210, 222, user.getText());
             requestFocusInWindow();
         }
         if (ev.getKeyCode()==KeyEvent.VK_F){
             TextUpdate("space");
             fadein(intro_txt, 210, 210, 222, user.getText());
+            requestFocusInWindow();
+            fadein(itxt2, 210, 210, 222, user.getText());
+            requestFocusInWindow();
+            fadein(itxt3, 210, 210, 222, user.getText());
+            fadein(itxt4, 210, 210, 222, user.getText());
         }
     }
 

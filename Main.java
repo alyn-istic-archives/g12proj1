@@ -1,3 +1,5 @@
+package g12proj1;
+
 import java.awt.*;
 import java.io.File;
 import java.io.IOException;
