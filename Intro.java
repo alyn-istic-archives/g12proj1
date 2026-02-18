@@ -15,7 +15,7 @@ import javax.swing.Timer;
 public class Intro extends JFrame implements ActionListener, KeyListener{
 
 
-    JLabel intro_txt, background, icon, yap, star1, star2,event, itxt2,itxt3, itxt4;
+    JLabel intro_txt, background, icon, yap, star1, star2,event, itxt2,itxt3, itxt4, userb;
     Font f = new Font("Handjet", Font.BOLD, 80);
     Font g = new Font("Gravitas One", Font.BOLD, 75);
     JButton iconb, yapb;
@@ -49,9 +49,9 @@ public class Intro extends JFrame implements ActionListener, KeyListener{
 
         loadframes();
 
-        event = new JLabel("interaction: ??");
-        event.setBounds(150, 400, 1000, 100);
-        event.setForeground(new Color(225, 225, 225));
+        event = new JLabel("click me ^^^");
+        event.setBounds(125, 400, 1000, 100);
+        event.setForeground(new Color(191, 221, 243));
         event.setFont(f);
         this.add(event);
 
@@ -82,10 +82,17 @@ public class Intro extends JFrame implements ActionListener, KeyListener{
         abt_me = (new ImageIcon("C:/Users/alyss/Downloads/about me.png"));
         abt_me_clear =(new ImageIcon("C:/Users/alyss/Downloads/yap_rect_v.png"));
 
-        user = new JTextField("FREE ME");
-        user.setBounds(500,500,200,100);
+        user = new JTextField("title text !!");
+        user.setBounds(450,500,300,100);
+        user.setForeground(new Color(191, 221, 243));
         user.setFont(f);
         this.add(user);
+
+        userb = new JLabel("save title");
+        userb.setBounds(750, 500, 100, 200);
+        userb.setForeground(new Color(191, 221, 243));
+        userb.setFont(f);
+        this.add(userb);
 
         yapb = new JButton("yap");
         yapb.setBounds(835, 285, 280, 320);
@@ -116,8 +123,8 @@ public class Intro extends JFrame implements ActionListener, KeyListener{
         this.add(itxt4);
 
 
-        background = new JLabel(new ImageIcon(new ImageIcon(("C:/Users/alyss/Downloads/deepblue.png")).getImage().getScaledInstance(1920, 1080, Image.SCALE_SMOOTH)));
-        background.setBounds(0, 0, 1920, 1080);
+        background = new JLabel(new ImageIcon("C:/Users/alyss/Downloads/bg (1).png"));
+        background.setBounds(0, 0, 1920, 900);
         add(background);
 
 
@@ -278,30 +285,37 @@ public class Intro extends JFrame implements ActionListener, KeyListener{
             TextUpdate("up");
             animate(star, star2, 4);
         }
-        if (ev.getKeyCode()== KeyEvent.VK_SPACE){
-            TextUpdate("space");
-            fadeout(intro_txt, 210, 210,222, user.getText());
-            fadeout(itxt2, 210, 210, 222, user.getText());
-            fadeout(itxt3, 210, 210, 222, user.getText());
-            fadeout(itxt4, 210, 210, 222, user.getText());
+        if (ev.getKeyCode()== KeyEvent.VK_J){
+            TextUpdate("fadeout");
+            fadeout(intro_txt, 191, 221, 243, user.getText());
+            fadeout(itxt2, 191, 221, 243, user.getText());
+            fadeout(itxt3, 191, 221, 243, user.getText());
+            fadeout(itxt4, 191, 221, 243, user.getText());
             requestFocusInWindow();
         }
         if (ev.getKeyCode()==KeyEvent.VK_F){
-            TextUpdate("space");
-            fadein(intro_txt, 210, 210, 222, user.getText());
+            TextUpdate("fadein");
+            fadein(intro_txt, 191, 221, 243, user.getText());
             requestFocusInWindow();
-            fadein(itxt2, 210, 210, 222, user.getText());
+            fadein(itxt2, 191, 221, 243, user.getText());
             requestFocusInWindow();
-            fadein(itxt3, 210, 210, 222, user.getText());
-            fadein(itxt4, 210, 210, 222, user.getText());
+            fadein(itxt3, 191, 221, 243, user.getText());
+            fadein(itxt4, 191, 221, 243, user.getText());
         }
     }
 
     public void introUpdate(String u){
-        intro = u;
-        itxt2.setText(intro);
-        itxt3.setText(intro);
-        itxt4.setText(intro);
+        if (u=="cny"){
+            intro = "shin nian quai leu";
+            itxt2.setText(intro);
+            itxt3.setText(intro);
+            itxt4.setText(intro);
+        }else {
+            intro = u;
+            itxt2.setText(intro);
+            itxt3.setText(intro);
+            itxt4.setText(intro);
+        }
     }
 
     public void keyTyped(KeyEvent e) {

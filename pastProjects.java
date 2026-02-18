@@ -12,22 +12,22 @@ public class pastProjects extends JFrame implements ActionListener, KeyListener 
     JLabel games;
     public pastProjects(){
         this.setTitle("Past Conquests !!");
-        setBounds(100, 400, 600, 600);
+        setBounds(200, 200, 500, 500);
         setLayout(null);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         this.setAlwaysOnTop(true);
-
 
 
         games = new JLabel(new ImageIcon("/C://Users//alyss//Downloads//proje.png/"));
         games.setBounds(0,0, 3000,2000);
 
         scroll = new JScrollPane(games);
-        scroll.setBounds(0,0, 600, 600);
+        scroll.setBounds(0,0, 490, 470);
 
         this.add(scroll);
 
         setVisible(true);
+        setResizable(false);
     }
     public void actionPerformed (ActionEvent e){
 
