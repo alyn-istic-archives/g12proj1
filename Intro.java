@@ -238,7 +238,6 @@ public class Intro extends JFrame implements ActionListener, KeyListener{
             public void actionPerformed(ActionEvent i) {
                 if (a > 0) {
                     j.setForeground(new Color(r, g, b, a));
-                    j.setText(finalL);
                     introUpdate(finalL);
                     requestFocusInWindow();
                     a -= 10;
@@ -318,11 +317,15 @@ public class Intro extends JFrame implements ActionListener, KeyListener{
 
     public void introUpdate(String u){
         if (u.equals("cny")){
-            intro = "shin nian quai leu";
+            intro = "xin nian quai leu";
             intro_txt.setText(intro);
             itxt2.setText(intro);
             itxt3.setText(intro);
             itxt4.setText(intro);
+            intro_txt.setForeground(new Color(255, 0, 0));
+            itxt2.setForeground(new Color(255, 0, 0));
+            itxt3.setForeground(new Color(255, 0, 0));
+            itxt4.setForeground(new Color(255, 0, 0));
         }else {
             intro = u;
             intro_txt.setText(intro);
