@@ -48,7 +48,7 @@ public class Selfie extends JFrame implements ActionListener{
         this.add(yap2);
 
         yap3 = new JLabel("down+up arrows, explore !!");
-        yap3.setBounds(10, 400, 1000, 50);
+        yap3.setBounds(10, 450, 1000, 50);
         yap3.setVisible(false);
         yap3.setForeground(new Color(191, 221, 243, 150));
         yap3.setFont(f);

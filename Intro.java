@@ -181,7 +181,7 @@ public class Intro extends JFrame implements ActionListener, KeyListener{
             }
         }
         if (e.getSource()=="userb"){
-            introUpdate("new title pending fade..");
+            event.setText("new title pending fade..");
             requestFocusInWindow();
         }
     }
@@ -227,7 +227,10 @@ public class Intro extends JFrame implements ActionListener, KeyListener{
 
     public void fadeout(JLabel j, int r, int g, int b, String l){
         a=255;
-        if ((fadeoutTimer != null&&fadeoutTimer.isRunning()) || (fadeinTimer.isRunning()&&fadeinTimer != null)) {
+        if (fadeoutTimer != null && fadeoutTimer.isRunning()) {
+            return;
+        }
+        if (fadeinTimer != null && fadeinTimer.isRunning()) {
             return;
         }
         String finalL = l;
@@ -249,15 +252,13 @@ public class Intro extends JFrame implements ActionListener, KeyListener{
     }
 
     public void fadein(JLabel j, int r, int g, int b, String l){
-        a=0;
-        if (fadeinTimer!=null && fadeoutTimer!=null) {
-            if (fadeoutTimer.isRunning() || fadeinTimer.isRunning()) {
-                return;
-            }
-            else{
-                System.out.println("not null but running");
-            }
+        if (fadeinTimer != null && fadeinTimer.isRunning()) {
+            return;
         }
+        if (fadeoutTimer != null && fadeoutTimer.isRunning()) {
+            return;
+        }
+        a=0;
         fadeinTimer = new Timer(30, new ActionListener() {
             public void actionPerformed(ActionEvent i) {
                 if (a < 250) {
