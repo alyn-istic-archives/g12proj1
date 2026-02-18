@@ -41,19 +41,27 @@ public class Intro extends JFrame implements ActionListener, KeyListener{
 
         addKeyListener(this);
 
+        //big title headliner text
+
         intro_txt = new JLabel(intro);
         intro_txt.setBounds(introx, 50, textw, texth);
         intro_txt.setForeground(new Color(191, 221, 243));
         intro_txt.setFont(g);
         this.add(intro_txt);
 
+        //loadframes for my animation
+
         loadframes();
 
+        //prompt initial click lowk need to make that bigger whoops
+
         event = new JLabel("click me ^^^");
-        event.setBounds(125, 400, 1000, 100);
+        event.setBounds(100, 400, 1000, 100);
         event.setForeground(new Color(191, 221, 243));
         event.setFont(f);
         this.add(event);
+
+        //firsy and second stars !!
 
         star1 = new JLabel(new ImageIcon("C:/Users/alyss/Downloads/star1.png"));
         star1.setBounds(1025,500, 200,200 );
@@ -63,6 +71,8 @@ public class Intro extends JFrame implements ActionListener, KeyListener{
 
         this.add(star1);
         this.add(star2);
+
+        //marketable alyn core !! and the corresponding button
 
         icon = new JLabel(new ImageIcon("C:/Users/alyss/Downloads/icon.png"));
         icon.setBounds(100, 100, 300, 300);
@@ -82,19 +92,13 @@ public class Intro extends JFrame implements ActionListener, KeyListener{
         abt_me = (new ImageIcon("C:/Users/alyss/Downloads/about me.png"));
         abt_me_clear =(new ImageIcon("C:/Users/alyss/Downloads/yap_rect_v.png"));
 
-        user = new JTextField("title text !!");
-        user.setBounds(350,500,300,100);
+        //change title prompot
+
+        user = new JTextField("INTRO 01: ALYN");
+        user.setBounds(400,500,400,100);
         user.setForeground(new Color(191, 221, 243));
         user.setFont(f);
         this.add(user);
-
-        userb = new JButton("save title");
-        userb.setBounds(650, 500, 300, 100);
-        userb.setForeground(new Color(191, 221, 243));
-        userb.setFont(f);
-        userb.addActionListener(this);
-        userb.setOpaque(false);
-        this.add(userb);
 
         yapb = new JButton("yap");
         yapb.setBounds(835, 285, 280, 320);
@@ -180,10 +184,7 @@ public class Intro extends JFrame implements ActionListener, KeyListener{
                 requestFocusInWindow();
             }
         }
-        if (e.getSource()=="userb"){
-            event.setText("new title pending fade..");
-            requestFocusInWindow();
-        }
+
     }
 
     public void animate(Icon[] i, JLabel j, int ind){
@@ -316,8 +317,8 @@ public class Intro extends JFrame implements ActionListener, KeyListener{
     }
 
     public void introUpdate(String u){
-        if (u.equals("cny")){
-            intro = "xin nian quai leu";
+        if (u.contains("lny")||u.contains("lunar new year")){
+            intro = "xin nian quai leu !!";
             intro_txt.setText(intro);
             itxt2.setText(intro);
             itxt3.setText(intro);
@@ -332,6 +333,10 @@ public class Intro extends JFrame implements ActionListener, KeyListener{
             itxt2.setText(intro);
             itxt3.setText(intro);
             itxt4.setText(intro);
+            intro_txt.setForeground(new Color(191, 221, 243));
+            itxt2.setForeground(new Color(191, 221, 243));
+            itxt3.setForeground(new Color(191, 221, 243));
+            itxt4.setForeground(new Color(191, 221, 243));
         }
     }
 
